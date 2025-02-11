@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
+import Detail from './components/detail'
 
 function App() {
   // definindo valores iniciais
+  const [visible, setVisible] = useState(false)
+  const [details, setDetails] = useState([{
+    idDetails: -1,
+    textDetails: ""
+  }])
   const [tasks, setTasks] = useState([
     {
     id: 1,
@@ -26,7 +32,7 @@ function App() {
   }
 ])
 
-  // mudar aparencia ao clicar
+  // mudar aparência ao clicar
   function onTaskClick(taskId) {
     const newTask = tasks.map(task => {
       // atualizar interface ao clicar na tarefa
@@ -41,13 +47,16 @@ function App() {
     setTasks(newTask);
   }
 
-  // monitoramento, pode apagar depois
+  //! monitoramento, pode apagar depois
   useEffect(() => {
-    console.log(tasks)
+    console.log(details)
   })
 
-  // deletar tasks
+  // deletar tasks e limpar descrição
   function deleteTask(taskId) {
+    if (taskId === details[0].idDetails) {
+      setDetails([{idDetails: -1, textDetails: ""}])
+    }
     setTasks(tasks.filter(task => task.id !== taskId))
   }
 
@@ -55,14 +64,36 @@ function App() {
   function addTasks(newTittle, newDescription) {
     setTasks([...tasks, {id:tasks.length + 1, tittle: newTittle, description: newDescription, isCompleted: false}])
   }
+
+  // mostrar e ocultar detalhes
+  function showDetails(taskId) {
+    if (visible && taskId === details[0].idDetails) {
+      setVisible(false)
+    } else {
+      setVisible(true)
+    }
+    tasks.map(task => {
+      // atualizar interface ao clicar na tarefa
+      if (task.id === taskId) {
+        setDetails([{idDetails: taskId, textDetails: task.description}])
+      }
+    })
+  }
   
   // retorno
   return (
     <div className='w-screen h-screen flex p-6 justify-center bg-slate-500'>
-    <div className='w-[500px]'>
+    <div className='w-[600px]'>
       <h1 className='text-3xl text-slate-100 font-bold text-center'>Gerenciador de Tarefas</h1>
-      <AddTask addTasks={addTasks}/>
-      <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask}/>
+      <div className='flex gap-2 justify-center'>
+        <div className={`transition-all duration-500 z-1 ${visible ? 'glow translate-x-[0%]':'flex-none translate-x-[45%]'}`}>
+          <AddTask addTasks={addTasks}/>
+          <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} showDetails={showDetails} visible={visible} details={details}/>
+        </div>
+        <div className={`transition-all duration-500 z-0 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-100%]'}`}>
+          <Detail details={details} ></Detail>
+        </div>
+      </div>
     </div>
     </div>
   )
