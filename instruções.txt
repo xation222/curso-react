@@ -1,0 +1,20 @@
+vite + react + tailwindcss
+npm create vite .
+select react
+select javascript
+npm install
+npm install tailwindcss @tailwindcss/vite
+npm run dev
+
+Add the @tailwindcss/vite plugin to your Vite configuration.
+    in vite.config.ts add 
+        import tailwindcss from '@tailwindcss/vite'
+        export default defineConfig({
+            plugins: [    
+            tailwindcss(),
+            ],
+        })
+
+Add an @import "tailwindcss"; to your CSS file that imports Tailwind CSS.
+
+npm run dev
