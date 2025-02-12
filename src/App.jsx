@@ -84,11 +84,11 @@ function App() {
   
   // retorno
   return (
-    <div className='w-screen h-screen flex p-6 justify-center bg-slate-500'>
+    <div className='w-screen h-screen flex p-6 justify-center bg-slate-500 overflow-hidden'>
     <div className='w-[600px]'>
       <h1 className='text-3xl text-slate-100 font-bold text-center'>Gerenciador de Tarefas</h1>
       <div className='flex gap-2 justify-center'>
-        <div className={`transition-all duration-500 z-1 ${visible ? 'sm:glow sm:translate-x-[0%] glow translate-x-[-42%]':'sm:flex-none sm:translate-x-[55%] flex-none translate-x-[55%]'}`}>
+        <div className={`transition-all duration-500 z-1 ${visible ? 'sm:glow sm:translate-x-[0%] glow translate-x-[-42%]':'sm:flex-none sm:translate-x-[140px] flex-none translate-x-[140px]'}`}>
           <AddTask addTasks={addTasks}/>
           <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} showDetails={showDetails} visible={visible} details={details}/>
         </div>
