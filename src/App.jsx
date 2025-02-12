@@ -88,11 +88,11 @@ function App() {
     <div className='w-[600px]'>
       <h1 className='text-3xl text-slate-100 font-bold text-center'>Gerenciador de Tarefas</h1>
       <div className='flex gap-2 justify-center'>
-        <div className={`transition-all duration-500 z-1 ${visible ? 'sm:glow sm:translate-x-[0%] glow translate-x-[-42%]':'sm:flex-none sm:translate-x-[45%] flex-none translate-x-[45%]'}`}>
+        <div className={`transition-all duration-500 z-1 ${visible ? 'sm:glow sm:translate-x-[0%] glow translate-x-[-42%]':'sm:flex-none sm:translate-x-[55%] flex-none translate-x-[55%]'}`}>
           <AddTask addTasks={addTasks}/>
           <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} showDetails={showDetails} visible={visible} details={details}/>
         </div>
-        <div className={`transition-all duration-500 z-0 ${visible ? 'sm:opacity-100 sm:translate-x-0 opacity-100 translate-x-[-45%]' : 'sm:opacity-0 sm:translate-x-[-100%] opacity-0 translate-x-[-100%]'}`}>
+        <div className={`transition-all duration-500 z-0 ${visible ? 'sm:opacity-100 sm:translate-x-[0%] opacity-100 translate-x-[-35%]' : 'sm:opacity-0 sm:translate-x-[-100%] opacity-0 translate-x-[-100%]'}`}>
           <Detail details={details} ></Detail>
         </div>
       </div>
