@@ -17,17 +17,19 @@ function Tasks (props) {
             </button>
 
             <button 
+            className="bg-slate-400 text-white p-2 rounded-md"
+            onClick={() => props.deleteTask(tasks.id)}>
+                <TrashIcon></TrashIcon>
+            </button>
+
+            <button 
             className={`bg-slate-400 text-white p-2 rounded-md ${props.visible && props.details[0].idDetails == tasks.id ? "bg-slate-800" : "bg-slate-400"}`} 
             onClick={() => props.showDetails(tasks.id)}>
                 <ChevronsRightIcon className={props.visible && props.details[0].idDetails == tasks.id ? "hidden" : "block"}></ChevronsRightIcon>
                 <ChevronsLeftIcon className={props.visible && props.details[0].idDetails == tasks.id ? "block" : "hidden"}></ChevronsLeftIcon>
             </button>
 
-            <button 
-            className="bg-slate-400 text-white p-2 rounded-md"
-            onClick={() => props.deleteTask(tasks.id)}>
-                <TrashIcon></TrashIcon>
-            </button>
+
 
             </li>
 
