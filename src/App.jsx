@@ -92,7 +92,7 @@ function App() {
           <AddTask addTasks={addTasks}/>
           <Tasks tasks={tasks} onTaskClick={onTaskClick} deleteTask={deleteTask} showDetails={showDetails} visible={visible} details={details}/>
         </div>
-        <div className={`transition-all duration-500 z-0 ${visible ? 'sm:opacity-100 sm:translate-x-[0%] opacity-100 translate-x-[-35%]' : 'sm:opacity-0 sm:translate-x-[-100%] opacity-0 translate-x-[-100%]'}`}>
+        <div className={`transition-all duration-500 z-0 ${visible ? 'sm:opacity-100 sm:translate-x-[0%] opacity-100 translate-x-[-150px]' : 'sm:opacity-0 sm:translate-x-[-100%] opacity-0 translate-x-[-100%]'}`}>
           <Detail details={details} ></Detail>
         </div>
       </div>
