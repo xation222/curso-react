@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-import Detail from './components/detail'
+import Detail from './components/Detail'
 
 function App() {
   // definindo valores iniciais
