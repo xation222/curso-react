@@ -15,12 +15,15 @@ function AddTask (props) {
     
     // enviando valores pra lista
     function submitTask(tit, des) {
-        console.log("Valor do titulo:", tit);
-        console.log("Valor da descrição:", des);
-        props.addTasks(tit, des)
-        setInputValueTitle(""); // Limpa o input após o envio
-        setInputValueDescription(""); // Limpa o input após o envio
-        limpar
+        console.log(tit, des)
+        if (tit && des) {
+            props.addTasks(tit, des)
+            setInputValueTitle(""); // Limpa o input após o envio
+            setInputValueDescription(""); // Limpa o input após o envio
+            limpar
+        } else {
+            return alert("Preencha o Título e a Descrição da tarefa antes de adicioná-la")
+        }
     }
 
     // limpando essa merda de input

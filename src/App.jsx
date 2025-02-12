@@ -11,7 +11,9 @@ function App() {
     idDetails: -1,
     textDetails: ""
   }])
-  const [tasks, setTasks] = useState([
+    const [tasks, setTasks] = useState(
+      JSON.parse(localStorage.getItem("tasks")) || [])
+  /*const [tasks, setTasks] = useState([
     {
     id: 1,
     tittle: "Estudar programação",
@@ -31,7 +33,7 @@ function App() {
     isCompleted: false
   }
 ])
-
+*/
   // mudar aparência ao clicar
   function onTaskClick(taskId) {
     const newTask = tasks.map(task => {
@@ -47,10 +49,10 @@ function App() {
     setTasks(newTask);
   }
 
-  //! monitoramento, pode apagar depois
+  // salvando tasks
   useEffect(() => {
-    console.log(details)
-  })
+    localStorage.setItem("tasks", JSON.stringify(tasks)); // salvando tasks em arquivo json toda vez que tasks for alterado
+  }, [tasks])
 
   // deletar tasks e limpar descrição
   function deleteTask(taskId) {
